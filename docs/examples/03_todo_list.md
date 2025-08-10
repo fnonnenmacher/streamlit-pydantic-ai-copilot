@@ -1,7 +1,7 @@
 # Todo List Agent
 
 This example demonstrates how to maintain a shared state between the UI and the agent, allowing the frontend to automatically update whenever the agent modifies the state.
-It's full code can be found [here](https://github.com/fnonnenmacher/streamlit-pydantic-ai-copilot/examples/03_todo_list.py).
+It's full code can be found [here](https://github.com/fnonnenmacher/streamlit-pydantic-ai-copilot/tree/main/examples/03_todo_list.py).
 
 ![type:video](site:resources/03_todo_list.mp4)
 

@@ -1,7 +1,7 @@
 # Basic Demo
 
 This basic demo demonstrates delegating tool calls to the user and rendering of Pydantic internal tool calls.
-It's full code can be found [here](https://github.com/fnonnenmacher/streamlit-pydantic-ai-copilot/examples/01_basic_demo.py).
+It's full code can be found [here](https://github.com/fnonnenmacher/streamlit-pydantic-ai-copilot/tree/main/examples/01_basic_demo.py).
 
 ![type:video](site:resources/01_basic_demo.mp4)
 

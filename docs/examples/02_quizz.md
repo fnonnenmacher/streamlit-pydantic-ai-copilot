@@ -1,7 +1,7 @@
 # Quizz Agent
 
 This examples demonstrates again delegating tool calls to the user and rendering of custom agent results.
-It's full code can be found [here](https://github.com/fnonnenmacher/streamlit-pydantic-ai-copilot/examples/02_quizz.py).
+It's full code can be found [here](https://github.com/fnonnenmacher/streamlit-pydantic-ai-copilot/tree/main/examples/02_quizz.py).
 
 ![type:video](site:resources/02_quizz.mp4)
 
