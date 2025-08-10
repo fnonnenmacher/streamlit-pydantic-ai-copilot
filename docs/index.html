@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <!-- Redirect from top level page to example pipelines page. -->
+    <head>
+        <meta charset="utf-8" />
+        <title>Redirecting</title>
+        <noscript>
+            <meta http-equiv="refresh" content="1; url=features/" />
+        </noscript>
+        <script>
+            window.location.replace(
+                "getting_started/" +
+                    window.location.search +
+                    window.location.hash,
+            );
+        </script>
+    </head>
+    <body>
+        Redirecting to <a href="getting_started/">getting_started/</a>...
+    </body>
+</html>

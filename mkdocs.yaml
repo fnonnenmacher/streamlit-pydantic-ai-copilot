@@ -1,0 +1,89 @@
+site_name: "Streamlit Pydantic AI Copilot"
+site_description: "The documentation of the Streamlit Pydantic AI Copilot"
+site_url: "https://nonnenmacher.dev/streamlit-pydantic-ai-copilot"
+repo_url: "https://github.com/fnonnenmacher/streamlit-pydantic-ai-copilot"
+edit_uri: edit/main/docs/
+repo_name: fnonnenmacher/streamlit-pydantic-ai-copilot
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.indexes
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.expand
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    - content.action.edit
+    - header.autohide
+    - content.code.annotate
+  favicon: favicon.ico
+  logo: favicon.ico
+  icon:
+    repo: fontawesome/brands/git-alt
+  language: en
+  palette:
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+      primary: indigo
+      accent: purple
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+      primary: indigo
+      accent: purple
+plugins:
+  - site-urls
+  - mkdocs-video:
+      is_video: true
+  - termynal:
+      title: "shell"
+      buttons: "macos"
+      prompt_literal_start:
+        - "$"
+        - ">"
+        - ">>>"
+        - "❯"
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      auto_title: true
+      linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.mark
+  - pymdownx.betterem
+  - pymdownx.blocks.html
+  - pymdownx.tilde
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - footnotes
+  - attr_list
+  - tables
+
+
+nav:
+  - Getting Started: getting_started/index.md
+  - Features: features/index.md
+  - Examples:
+      - Basic Demo: examples/01_basic_demo.md
+      - Quizz: examples/02_quizz.md
+      - Todo List: examples/03_todo_list.md

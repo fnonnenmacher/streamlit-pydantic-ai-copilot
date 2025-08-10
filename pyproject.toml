@@ -1,0 +1,82 @@
+[project]
+name = "streamlit-pydantic-ai-copilot"
+version = "0.0.1"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic-ai-slim>=0.6.2",
+    "streamlit>=1.48.0",
+    "typing-extensions>=4.14.1",
+]
+
+
+[dependency-groups]
+docs = [
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.6.16",
+    "mkdocs-video>=1.5.0",
+    "termynal>=0.13.0",
+    "mkdocs-site-urls>=0.3.0",
+]
+dev = [
+  "openai==1.99.1", # required because of https://github.com/pydantic/pydantic-ai/issues/2476
+  "pydantic-ai-slim[openai]>=0.6.2",
+  "ruff>=0.12.7",
+  "basedpyright>=1.13.0",
+  "deptry >= 0.21.1",
+  "pytest>=8.4.1",
+  "dotenv>=0.9.9",
+]
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["streamlit_pydantic_ai_copilot"]
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 120
+exclude = [
+  ".git",
+  ".gitignore",
+  "__pycache__",
+  "*.egg-info",
+  ".nox",
+  ".mypy_cache",
+  ".ruff-cache",
+  ".pytest_cache",
+  ".venv",
+  "venv",
+  ".vscode",
+  ".idea",
+]
+
+[tool.ruff.lint]
+ignore = ["E402"]
+select = ["C", "E", "F", "W", "B"]
+
+[tool.ruff.lint.flake8-errmsg]
+max-string-length = 120
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.pytest.ini_options]
+addopts = "-v -x --strict-markers"
+log_cli = true
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.basedpyright]
+pythonVersion = "3.12"
+typeCheckingMode = "strict"
+venvPath = "."
+venv = '.venv'
+
+[tool.deptry]
+extend_exclude = ["docs", "examples", ".*/tests"]
+known_first_party = ["streamlit_pydantic_ai_copilot"]
