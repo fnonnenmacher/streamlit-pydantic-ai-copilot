@@ -2,6 +2,7 @@ name: Release
 
 permissions:
   contents: write # required to push the new version
+  id-token: write # required for Trusted Publishing to pypi
 
 on:
   push:
@@ -32,9 +33,18 @@ jobs:
         with:
             name: "streamlit-pydantic-ai-copilot"
             path: "dist/*.whl"
-      - run: |
+    # TODO: Enable pypi publishing after being confident :)
+    #   - name: Publish package distributions to PyPI
+    #     uses: pypa/gh-action-pypi-publish@release/v1
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+      - name: Bump version and commit
+        run: |
           uv version --bump patch
           new_version=$(uv version --short)
           uv sync --all-groups
           git add pyproject.toml uv.lock
           git commit -m "Bump version to $new_version"
+          git push origin HEAD:main
