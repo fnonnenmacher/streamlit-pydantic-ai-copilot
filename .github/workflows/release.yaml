@@ -1,0 +1,23 @@
+name: Release
+permissions:
+  id-token: write # This is required for requesting the JWT
+
+on:
+  push:
+    tags:
+      - '**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-groups
+      - run: uv build
+      - uses: actions/upload-artifact@v4
+        with:
+            name: "streamlit-pydantic-ai-copilot"
+            path: "dist/*.whl"
