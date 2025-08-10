@@ -1,15 +1,16 @@
 name: Release
+
 permissions:
-  id-token: write # This is required for requesting the JWT
+  contents: write # required to push the new version
 
 on:
   push:
     tags:
-      - '**'
+      - 'v*'
   workflow_dispatch:
 
 jobs:
-  deploy:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +18,23 @@ jobs:
         uses: astral-sh/setup-uv@v6
       - run: uv sync --all-groups
       - run: uv build
+      - name: Check consistent version
+        run: |
+          uv_version=$(uv version --short)
+          tag_version=${{ github.ref_name }}
+          if [ "v$uv_version" != "$tag_version" ]; then
+            echo "Version mismatch:"
+            echo "Pyproject.toml version:    $uv_version"
+            echo "Tag version:              $tag_version"
+            exit 1
+          fi
       - uses: actions/upload-artifact@v4
         with:
             name: "streamlit-pydantic-ai-copilot"
             path: "dist/*.whl"
+      - run: |
+          uv version --bump patch
+          new_version=$(uv version --short)
+          uv sync --all-groups
+          git add pyproject.toml uv.lock
+          git commit -m "Bump version to $new_version"
